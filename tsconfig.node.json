@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    // A composite project may not set `noEmit` (TS6310), so emit is pointed at
+    // a gitignored temp dir instead. Nothing consumes the output — this project
+    // exists only to type-check vite.config.ts.
+    "outDir": "./node_modules/.tmp/node-config",
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo"
+  },
+  "include": ["vite.config.ts"]
+}
