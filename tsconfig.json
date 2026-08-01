@@ -15,7 +15,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["vitest/globals", "@testing-library/jest-dom"],
+    // "node" is required by noHardcodedHosts.test.ts, which walks src/ with
+    // node:fs. Without it `tsc -b` fails even though Vitest runs fine.
+    "types": ["vitest/globals", "@testing-library/jest-dom", "node"],
     "baseUrl": ".",
     "paths": { "@/*": ["./src/*"] }
   },
