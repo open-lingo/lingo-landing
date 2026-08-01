@@ -9,6 +9,50 @@ export type GridItem = {
   description: string;
 };
 
+export type HeroPhrase = {
+  lang: string;
+  langLabel: string;
+  words: { text: string; reading?: string }[];
+  meaning: string;
+};
+
+/**
+ * The hero sentence, per language. Each is a real, grammatical sentence a
+ * learner reaches early — not a slogan translated word-for-word, which is what
+ * makes most language-app marketing read as fake to anyone who speaks one.
+ *
+ * Spanish carries no reading row on purpose: it does not need romanisation,
+ * and pretending otherwise would misrepresent the writing system.
+ */
+export const HERO_PHRASES: readonly HeroPhrase[] = [
+  {
+    lang: "ja",
+    langLabel: "Japanese",
+    words: [
+      { text: "日本語", reading: "nihongo" },
+      { text: "が", reading: "ga" },
+      { text: "読める", reading: "yomeru" },
+    ],
+    meaning: "I can read Japanese.",
+  },
+  {
+    lang: "ko",
+    langLabel: "Korean",
+    words: [
+      { text: "한국어", reading: "hangugeo" },
+      { text: "를", reading: "reul" },
+      { text: "읽어요", reading: "ilgeoyo" },
+    ],
+    meaning: "I read Korean.",
+  },
+  {
+    lang: "es",
+    langLabel: "Spanish",
+    words: [{ text: "Puedo" }, { text: "leer" }, { text: "español" }],
+    meaning: "I can read Spanish.",
+  },
+] as const;
+
 /**
  * Every user-visible marketing string. Components import from here rather than
  * inlining prose, so adding i18n later is mechanical.
@@ -19,93 +63,102 @@ export type GridItem = {
  */
 export const COPY = {
   hero: {
-    eyebrow: "Built by learners · 100% open source",
-    headlineLead: "Pick a language.",
-    headlineAccent: "Start in 60 seconds.",
+    eyebrow: "Free · Open source · No account needed to start",
+    lead: "Right now you need the small grey text.",
+    leadAccent: "Give it three weeks.",
     subtitle:
-      "Structured courses, spaced-repetition flashcards, and letter practice — in a free app you actually own.",
-    primaryCta: "Try it free",
-    secondaryCta: "Get started",
-    meta: "No credit card · No signup to try · Free and open source",
-    languages: "Korean, Japanese, and Spanish today — more on the roadmap.",
+      "Structured courses, spaced repetition that actually tracks what you forget, and handwriting practice — in an app whose source you can read.",
+    primaryCta: "Try a lesson",
+    secondaryCta: "Create account",
+    meta: "No card, no signup to try, no ads on lessons",
   },
 
   why: {
-    eyebrow: "Why Open Lingo",
-    title: "Built for learners, not metrics",
-    subtitle: "Four reasons people stay.",
+    eyebrow: "The pitch",
+    title: "Built for learners, not for metrics",
+    subtitle:
+      "Four decisions that shaped the product. Each one costs us an engagement number.",
     items: [
       {
         icon: "flame",
-        title: "Honest pace",
+        title: "No streak guilt",
         description:
-          "Five-minute lessons with real coverage. No streak guilt, no fake gamification.",
+          "Miss a day and nothing burns down. Five-minute lessons with real coverage beat a fake daily obligation you resent by week three.",
       },
       {
         icon: "bookText",
-        title: "Real curriculum",
+        title: "Written by hand",
         description:
-          "Hand-authored, research-backed sequencing — not an auto-generated word list.",
+          "Every module is authored and sequenced deliberately, following research on how a language is best introduced — not generated from a frequency list and shipped.",
       },
       {
         icon: "layers",
-        title: "Spaced repetition that respects you",
+        title: "Scheduling that admits what you forgot",
         description:
-          "Cards return when you are about to forget, not on a fixed schedule. No infinite drills.",
+          "FSRS-6 predicts when a word is about to slip and shows it then. No infinite drilling of things you already know.",
       },
       {
         icon: "github",
-        title: "Yours to fork",
+        title: "You can read the source",
         description:
-          "MIT licensed and open source. Read it, change it, self-host it. The app is the source.",
+          "MIT licensed, top to bottom. Inspect it, change it, run it on your own machine. If we ever get it wrong, you are not locked in.",
       },
     ] satisfies GridItem[],
   },
 
   features: {
-    eyebrow: "What you get",
-    title: "Everything in one app",
-    subtitle: "No upsells, no plugins.",
+    eyebrow: "What is in the app",
+    title: "One app, no plugins",
+    subtitle: "Everything below ships today.",
     items: [
       {
         icon: "graduationCap",
         title: "Structured courses",
         description:
-          "Hand-authored modules with speech recognition and pronunciation practice.",
+          "Hand-authored modules with speech recognition, so pronunciation is corrected while you learn it rather than after.",
       },
       {
         icon: "bookOpen",
         title: "Flashcards that adapt",
         description:
-          "FSRS-6 spaced repetition with audio and images, tracking recognition and recall separately.",
+          "Audio and images, with recognition and recall tracked as separate skills — because knowing a word on sight is not the same as producing it.",
       },
       {
         icon: "pencil",
         title: "Letter practice",
         description:
-          "Animated stroke order and handwriting with shape verification — Hiragana, Katakana, and Hangul.",
+          "Animated stroke order, then handwriting checked on the strokes you drew, not just the final shape. Hiragana, Katakana, Hangul.",
       },
       {
         icon: "layers",
         title: "Grammar drills",
         description:
-          "Grammar surfaced as quick, targeted exercises instead of buried in a reference PDF.",
+          "Particles and conjugation as quick targeted exercises, surfaced at the moment they matter instead of buried in a reference PDF.",
       },
     ] satisfies GridItem[],
+  },
+
+  demo: {
+    eyebrow: "A lesson step",
+    title: "This is the whole interface",
+    description:
+      "No mascot, no guilt popup, no upsell. A word, its sound, and a question that finds out whether you actually have it.",
+    caption: "A vocabulary step from the first Japanese module.",
   },
 
   open: {
     eyebrow: "Open by default",
     title: "Built in the open. Free forever.",
     description:
-      "Every feature ships under the MIT license. Self-host it if you want to.",
-    repoCta: "View on GitHub",
+      "Every feature ships under the MIT license, and the repository is the same code running in production. Self-host it if you would rather.",
+    repoCta: "Read the source",
   },
 
   closing: {
-    title: "Ready to start learning?",
-    subtitle: "Five minutes a day. Real progress in three weeks.",
-    roadmapPrompt: "Curious what is coming next?",
-    roadmapCta: "See the roadmap",
+    title: "Three weeks from now",
+    subtitle:
+      "That sentence at the top stops needing its annotation. Start with one lesson — no account required.",
+    roadmapPrompt: "Want to see what is coming next?",
+    roadmapCta: "Read the roadmap",
   },
 } as const;

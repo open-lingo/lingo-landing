@@ -1,45 +1,52 @@
-import { Link } from "react-router";
 import { LINKS } from "@/links";
-import { COPY } from "@/content/copy";
+import { COPY, HERO_PHRASES } from "@/content/copy";
+import { AnnotatedPhrase } from "./AnnotatedPhrase";
 import { Button } from "./ui/Button";
 import { Icon } from "./ui/Icon";
 
 export function Hero() {
   const { hero } = COPY;
   return (
-    <section className="mx-auto max-w-5xl px-6 pb-10 pt-16 text-center">
-      <span className="inline-flex items-center gap-2 rounded-full bg-accent-muted px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-accent">
-        <Icon name="flame" size={12} />
-        {hero.eyebrow}
-      </span>
+    <section className="relative overflow-hidden">
+      {/* A single soft wash behind the phrase, so the hero has depth without
+          resorting to a gradient headline. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-[32rem] w-[52rem] -translate-x-1/2 rounded-full bg-accent-muted/50 blur-3xl"
+      />
 
-      <h1 className="mx-auto mt-5 max-w-3xl text-balance text-[clamp(2.25rem,6vw,4rem)] font-black leading-[1.05] tracking-tight text-text-primary">
-        {hero.headlineLead}{" "}
-        <span className="text-accent">{hero.headlineAccent}</span>
-      </h1>
+      <div className="relative mx-auto max-w-5xl px-6 pb-16 pt-14 text-center sm:pt-20">
+        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-muted">
+          {hero.eyebrow}
+        </p>
 
-      <p className="mx-auto mt-4 max-w-xl text-[17px] leading-relaxed text-text-secondary">
-        {hero.subtitle}
-      </p>
+        <div className="mt-10 sm:mt-12">
+          <AnnotatedPhrase phrases={HERO_PHRASES} />
+        </div>
 
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
-        <Button href={LINKS.tryFree} size="hero">
-          <Icon name="play" size={18} />
-          {hero.primaryCta}
-        </Button>
-        <Button href={LINKS.getStarted} variant="outline" size="hero">
-          {hero.secondaryCta}
-          <Icon name="arrowRight" size={16} />
-        </Button>
+        <h1 className="mx-auto mt-12 max-w-2xl text-balance text-[clamp(1.75rem,4.2vw,2.75rem)] font-extrabold leading-[1.12] tracking-tight text-text-primary">
+          {hero.lead} <span className="text-accent">{hero.leadAccent}</span>
+        </h1>
+
+        <p className="mx-auto mt-4 max-w-xl text-[16px] leading-relaxed text-text-secondary">
+          {hero.subtitle}
+        </p>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Button href={LINKS.tryFree} size="hero">
+            <Icon name="play" size={17} />
+            {hero.primaryCta}
+          </Button>
+          <Button href={LINKS.getStarted} variant="outline" size="hero">
+            {hero.secondaryCta}
+            <Icon name="arrowRight" size={15} />
+          </Button>
+        </div>
+
+        <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.1em] text-text-muted">
+          {hero.meta}
+        </p>
       </div>
-
-      <p className="mt-4 text-[13px] text-text-muted">{hero.meta}</p>
-      <p className="mt-2 text-[13px] text-text-muted">
-        {hero.languages}{" "}
-        <Link to="/roadmap" className="text-accent underline">
-          Roadmap
-        </Link>
-      </p>
     </section>
   );
 }

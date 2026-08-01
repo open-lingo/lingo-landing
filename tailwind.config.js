@@ -28,6 +28,19 @@ export default {
         },
         success: "rgb(var(--color-success) / <alpha-value>)",
         link: "rgb(var(--color-link) / <alpha-value>)",
+        band: {
+          DEFAULT: "rgb(var(--color-band) / <alpha-value>)",
+          surface: "rgb(var(--color-band-surface) / <alpha-value>)",
+          border: "rgb(var(--color-band-border) / <alpha-value>)",
+          text: "rgb(var(--color-band-text) / <alpha-value>)",
+          muted: "rgb(var(--color-band-muted) / <alpha-value>)",
+          accent: "rgb(var(--color-band-accent) / <alpha-value>)",
+        },
+      },
+      fontFamily: {
+        sans: ["var(--font-family)"],
+        mono: ["var(--font-mono)"],
+        script: ["var(--font-script)"],
       },
       borderRadius: {
         sm: "var(--radius-sm)",

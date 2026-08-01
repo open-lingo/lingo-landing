@@ -1,4 +1,4 @@
-import { COPY, SUPPORTED_LANGUAGE_COUNT } from "./copy";
+import { COPY, HERO_PHRASES, SUPPORTED_LANGUAGE_COUNT } from "./copy";
 
 function allStrings(value: unknown): string[] {
   if (typeof value === "string") return [value];
@@ -14,6 +14,26 @@ describe("landing copy", () => {
 
   it("states the real number of supported languages", () => {
     expect(SUPPORTED_LANGUAGE_COUNT).toBe(3);
+  });
+
+  it("offers one hero phrase per supported language", () => {
+    expect(HERO_PHRASES).toHaveLength(SUPPORTED_LANGUAGE_COUNT);
+  });
+
+  it("gives every hero phrase words and a meaning", () => {
+    for (const phrase of HERO_PHRASES) {
+      expect(phrase.words.length).toBeGreaterThan(0);
+      expect(phrase.meaning.trim().length).toBeGreaterThan(0);
+      for (const word of phrase.words) {
+        expect(word.text.trim().length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("annotates the non-Latin scripts with readings", () => {
+    for (const phrase of HERO_PHRASES.filter((p) => p.lang !== "es")) {
+      expect(phrase.words.every((w) => w.reading)).toBe(true);
+    }
   });
 
   it.each([

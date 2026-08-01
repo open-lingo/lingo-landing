@@ -29,8 +29,25 @@
     --radius-lg: 20px;
     --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.08);
     --shadow-popover: 0 10px 15px -3px rgb(0 0 0 / 0.12);
-    --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-family: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* Readings, labels, and data. A phonetic transcription should look like a
+       transcription — that is the whole reason a mono face is in this system. */
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    /* Target-script glyphs in the hero. Latin falls through to the body face. */
+    --font-script: "Schibsted Grotesk", "Noto Sans JP", "Noto Sans KR",
+      ui-sans-serif, system-ui, sans-serif;
+
+    /* The inverted band. Every section on this page used to be the same cream
+       value, which is most of why it read as templated — a page needs rhythm.
+       In light mode the band goes near-black; in dark mode it lifts instead,
+       so the contrast survives either way. */
+    --color-band: 23 19 16;
+    --color-band-surface: 33 28 23;
+    --color-band-border: 53 46 38;
+    --color-band-text: 245 241 234;
+    --color-band-muted: 179 169 154;
+    --color-band-accent: 193 75 63;
   }
 
   .dark {
@@ -54,5 +71,14 @@
     --color-link: 96 165 250;
     --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.3);
     --shadow-popover: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+
+    /* Dark mode inverts the inversion: the band lifts off the background
+       rather than sinking into it, so the section break still reads. */
+    --color-band: 43 37 31;
+    --color-band-surface: 53 46 38;
+    --color-band-border: 74 65 54;
+    --color-band-text: 245 241 234;
+    --color-band-muted: 179 169 154;
+    --color-band-accent: 213 103 90;
   }
 }
