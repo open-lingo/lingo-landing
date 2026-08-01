@@ -27,6 +27,8 @@ export default {
           foreground: "rgb(var(--color-on-accent) / <alpha-value>)",
         },
         success: "rgb(var(--color-success) / <alpha-value>)",
+        error: "rgb(var(--color-error) / <alpha-value>)",
+        warning: "rgb(var(--color-warning) / <alpha-value>)",
         link: "rgb(var(--color-link) / <alpha-value>)",
         band: {
           DEFAULT: "rgb(var(--color-band) / <alpha-value>)",

@@ -1,6 +1,6 @@
 import { COPY } from "@/content/copy";
 import { useReveal, revealClasses, revealDelay } from "@/useReveal";
-import { LessonPreview } from "./LessonPreview";
+import { StepShowcase } from "./StepShowcase";
 import { Icon } from "./ui/Icon";
 
 /**
@@ -9,33 +9,12 @@ import { Icon } from "./ui/Icon";
  * rather than on another wall of prose.
  */
 export function FeatureBand() {
-  const demo = useReveal<HTMLDivElement>();
   const list = useReveal<HTMLDivElement>();
 
   return (
     <section className="bg-band text-band-text">
       <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
-        <div
-          ref={demo.ref}
-          className={`grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16 ${revealClasses(demo.shown)}`}
-        >
-          <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-band-accent">
-              {COPY.demo.eyebrow}
-            </p>
-            <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-[1.1] tracking-tight text-band-text">
-              {COPY.demo.title}
-            </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-band-muted">
-              {COPY.demo.description}
-            </p>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.1em] text-band-muted/70">
-              {COPY.demo.caption}
-            </p>
-          </div>
-
-          <LessonPreview />
-        </div>
+        <StepShowcase />
 
         <div className="mt-20 border-t border-band-border pt-14 sm:mt-28">
           <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-band-accent">

@@ -55,12 +55,29 @@ test("the hero phrase switches language on demand", async ({ page }) => {
   await expect(page.getByText("한국어")).toBeVisible();
 });
 
-test("the lesson preview grades an answer", async ({ page }) => {
+test("the embedded vocabulary step grades an answer", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /hello \/ good afternoon/i }).click();
   // Anchored to the schedule copy: a bare /correct/i also matches "corrected"
   // in the feature list further down the band.
   await expect(page.getByText(/next review in/i)).toBeVisible();
+});
+
+test("the review step grades a card after revealing it", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("tab", { name: /^review$/i }).click();
+  await page.getByRole("button", { name: /show answer/i }).click();
+  await page.getByRole("button", { name: /good.*in 5 days/i }).click();
+  await expect(page.getByText(/scheduled in 5 days/i)).toBeVisible();
+});
+
+test("the build step assembles a sentence", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("tab", { name: /build a sentence/i }).click();
+  for (const word of ["わたし", "は", "がくせい", "です"]) {
+    await page.getByRole("button", { name: word, exact: true }).first().click();
+  }
+  await expect(page.getByText(/は marks the topic/i)).toBeVisible();
 });
 
 test("content below the fold is reachable without motion", async ({ page }) => {

@@ -139,11 +139,12 @@ export const COPY = {
   },
 
   demo: {
-    eyebrow: "A lesson step",
-    title: "This is the whole interface",
+    eyebrow: "Inside a session",
+    title: "Have a go",
     description:
-      "No mascot, no guilt popup, no upsell. A word, its sound, and a question that finds out whether you actually have it.",
-    caption: "A vocabulary step from the first Japanese module.",
+      "Three real steps from the Japanese course, running on this page. Answer them — nothing is being recorded.",
+    // Truthful count: `lingo/src/features/lesson/types.ts` defines 27 step types.
+    more: "27 step types in the app · these are three",
   },
 
   open: {
