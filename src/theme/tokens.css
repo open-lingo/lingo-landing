@@ -50,6 +50,12 @@
     --color-band-text: 245 241 234;
     --color-band-muted: 179 169 154;
     --color-band-accent: 193 75 63;
+    /* Semantic colours scoped to the band. The band is dark in BOTH themes, so
+       the light palette's deep green/amber would go muddy on it — these are the
+       dark-theme values, pinned regardless of the active theme. */
+    --color-band-error: 239 68 68;
+    --color-band-warning: 245 158 11;
+    --color-band-success: 34 197 94;
   }
 
   .dark {

@@ -44,18 +44,43 @@ describe("VocabStep", () => {
 });
 
 describe("ReviewStep", () => {
-  it("hides grading until the answer is revealed", () => {
+  it("does not render grading controls until the answer is revealed", () => {
     render(<ReviewStep />);
-    expect(screen.getByRole("button", { name: /good.*in 5 days/i })).toBeDisabled();
+    expect(screen.queryByRole("button", { name: /good/i })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /show answer/i })).toBeInTheDocument();
+  });
+
+  it("replaces Show Answer with the grade row on reveal", async () => {
+    render(<ReviewStep />);
+    await userEvent.click(screen.getByRole("button", { name: /show answer/i }));
+
+    expect(screen.getByText("Good evening")).toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /show answer/i }),
+    ).not.toBeInTheDocument();
+    // Matched with the interval hint: a bare /Good/ also hits the revealed
+    // card body, which reads "Good evening".
+    for (const name of [
+      /^Again\s*<1d$/,
+      /^Hard\s*2d$/,
+      /^Good\s*5d$/,
+      /^Easy\s*12d$/,
+    ]) {
+      expect(screen.getByRole("button", { name })).toBeInTheDocument();
+    }
+  });
+
+  it("reveals by tapping the card itself", async () => {
+    render(<ReviewStep />);
+    await userEvent.click(screen.getByRole("button", { name: /tap to reveal/i }));
+    expect(screen.getByText("Good evening")).toBeInTheDocument();
   });
 
   it("grades the card and reports the new interval", async () => {
     render(<ReviewStep />);
     await userEvent.click(screen.getByRole("button", { name: /show answer/i }));
-    expect(screen.getByText("Good evening")).toBeInTheDocument();
-
-    await userEvent.click(screen.getByRole("button", { name: /hard.*in 2 days/i }));
-    expect(screen.getByText(/scheduled in 2 days/i)).toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: /^Hard\s*2d$/ }));
+    expect(screen.getByText(/graded hard · back in 2d/i)).toBeInTheDocument();
   });
 });
 

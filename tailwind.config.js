@@ -37,6 +37,9 @@ export default {
           text: "rgb(var(--color-band-text) / <alpha-value>)",
           muted: "rgb(var(--color-band-muted) / <alpha-value>)",
           accent: "rgb(var(--color-band-accent) / <alpha-value>)",
+          error: "rgb(var(--color-band-error) / <alpha-value>)",
+          warning: "rgb(var(--color-band-warning) / <alpha-value>)",
+          success: "rgb(var(--color-band-success) / <alpha-value>)",
         },
       },
       fontFamily: {
