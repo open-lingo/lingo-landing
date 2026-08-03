@@ -30,7 +30,7 @@ export function StepShowcase() {
         <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-band-accent">
           {COPY.demo.eyebrow}
         </p>
-        <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-[1.1] tracking-tight text-band-text">
+        <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold leading-[1.1] text-band-text">
           {COPY.demo.title}
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-band-muted">

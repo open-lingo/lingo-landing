@@ -9,7 +9,7 @@ export function LegalDocumentView({
 }) {
   return (
     <article className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-4xl font-black tracking-tight text-text-primary">
+      <h1 className="text-4xl font-bold text-text-primary">
         {document.title}
       </h1>
       {lastUpdated && (

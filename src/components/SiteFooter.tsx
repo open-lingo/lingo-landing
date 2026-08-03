@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto flex max-w-6xl flex-wrap gap-8 px-6 py-10 text-sm">
         <div className="min-w-[14rem] flex-1">
-          <p className="font-black text-text-primary">Open Lingo</p>
+          <p className="font-bold text-text-primary">Open Lingo</p>
           <p className="mt-1 max-w-xs text-text-secondary">
             Free, open-source language learning. MIT licensed.
           </p>

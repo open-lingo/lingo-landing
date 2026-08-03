@@ -11,7 +11,7 @@ export function DocPage() {
   if (!doc) {
     return (
       <section className="py-16 text-center">
-        <h1 className="text-3xl font-black text-text-primary">Doc not found</h1>
+        <h1 className="text-3xl font-bold text-text-primary">Doc not found</h1>
         <p className="mt-3 text-text-secondary">
           <Link to="/docs" className="text-accent underline">
             Back to the docs index
@@ -29,7 +29,7 @@ export function DocPage() {
         <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent">
           {doc.section}
         </p>
-        <h1 className="mt-2 text-[clamp(1.9rem,4vw,2.5rem)] font-black leading-tight tracking-tight text-text-primary">
+        <h1 className="mt-2 text-[clamp(1.9rem,4vw,2.5rem)] font-bold leading-tight text-text-primary">
           {doc.title}
         </h1>
         <p className="mt-3 text-[16px] leading-relaxed text-text-secondary">

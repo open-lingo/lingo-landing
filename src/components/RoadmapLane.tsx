@@ -81,7 +81,7 @@ export function RoadmapLane({
               aria-hidden
             />
             <h3
-              className={`text-[15px] font-bold leading-snug tracking-tight ${s.title}`}
+              className={`text-[15px] font-bold leading-snug ${s.title}`}
             >
               {item.title}
             </h3>

@@ -20,7 +20,7 @@ export function FeatureBand() {
           <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-band-accent">
             {COPY.features.eyebrow}
           </p>
-          <h2 className="mt-3 max-w-lg text-[clamp(1.5rem,3vw,2.125rem)] font-extrabold leading-[1.12] tracking-tight text-band-text">
+          <h2 className="mt-3 max-w-lg text-[clamp(1.5rem,3vw,2.125rem)] font-bold leading-[1.12] text-band-text">
             {COPY.features.title}
           </h2>
 
@@ -39,7 +39,7 @@ export function FeatureBand() {
                 <span className="text-band-accent">
                   <Icon name={item.icon} size={20} />
                 </span>
-                <h3 className="mt-3 text-[15px] font-bold tracking-tight text-band-text">
+                <h3 className="mt-3 text-[15px] font-bold text-band-text">
                   {item.title}
                 </h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-band-muted">

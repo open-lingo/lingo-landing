@@ -5,7 +5,7 @@ import { DOC_SECTIONS } from "@/content/docsIndex";
 export function Docs() {
   return (
     <div className="min-w-0">
-      <h1 className="text-[clamp(1.9rem,4vw,2.5rem)] font-black tracking-tight text-text-primary">
+      <h1 className="text-[clamp(1.9rem,4vw,2.5rem)] font-bold text-text-primary">
         Docs
       </h1>
       <p className="mt-3 max-w-xl text-[16px] leading-relaxed text-text-secondary">

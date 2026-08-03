@@ -53,7 +53,7 @@ export function AnnotatedPhrase({
             <span className="mb-1 block h-4 font-mono text-[11px] font-medium tracking-wide text-accent/70 sm:text-xs">
               {word.reading ?? ""}
             </span>
-            <span className="block font-script text-[clamp(2.1rem,7vw,4.25rem)] font-bold leading-none tracking-tight text-text-primary">
+            <span className="block font-script text-[clamp(2.1rem,7vw,4.25rem)] font-bold leading-none text-text-primary">
               {word.text}
             </span>
           </span>

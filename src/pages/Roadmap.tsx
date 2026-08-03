@@ -8,7 +8,7 @@ export function Roadmap() {
         <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
           {ROADMAP_ITEMS.length} things, no dates
         </p>
-        <h1 className="mt-3 text-[clamp(2rem,5vw,3rem)] font-extrabold leading-[1.05] tracking-tight text-text-primary">
+        <h1 className="mt-3 text-[clamp(2rem,5vw,3rem)] font-bold leading-[1.05] text-text-primary">
           Roadmap
         </h1>
         <p className="mt-4 text-[15px] leading-relaxed text-text-secondary">

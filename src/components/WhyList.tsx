@@ -29,7 +29,7 @@ export function WhyList({
           <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
             {eyebrow}
           </p>
-          <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-[1.1] tracking-tight text-text-primary">
+          <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold leading-[1.1] text-text-primary">
             {title}
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-text-secondary">
@@ -48,7 +48,7 @@ export function WhyList({
                 <Icon name={item.icon} size={18} />
               </span>
               <div>
-                <h3 className="text-[17px] font-bold tracking-tight text-text-primary">
+                <h3 className="text-[17px] font-bold text-text-primary">
                   {item.title}
                 </h3>
                 <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-text-secondary">

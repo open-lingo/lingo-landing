@@ -32,7 +32,7 @@ export function Landing() {
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-muted">
               {COPY.open.eyebrow}
             </p>
-            <h2 className="mt-3 text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-text-primary">
+            <h2 className="mt-3 text-[clamp(1.5rem,3vw,2rem)] font-bold text-text-primary">
               {COPY.open.title}
             </h2>
             <p className="mt-3 text-[15px] leading-relaxed text-text-secondary">
@@ -48,7 +48,7 @@ export function Landing() {
 
       <section className="mx-auto max-w-3xl px-6 pb-24 text-center">
         <div ref={closing.ref} className={revealClasses(closing.shown)}>
-          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold tracking-tight text-text-primary">
+          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-text-primary">
             {COPY.closing.title}
           </h2>
           <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-text-secondary">

@@ -24,7 +24,7 @@ export function Hero() {
           <AnnotatedPhrase phrases={HERO_PHRASES} />
         </div>
 
-        <h1 className="mx-auto mt-12 max-w-2xl text-balance text-[clamp(1.75rem,4.2vw,2.75rem)] font-extrabold leading-[1.12] tracking-tight text-text-primary">
+        <h1 className="mx-auto mt-12 max-w-2xl text-balance text-[clamp(1.75rem,4.2vw,2.75rem)] font-bold leading-[1.12] text-text-primary">
           {hero.lead} <span className="text-accent">{hero.leadAccent}</span>
         </h1>
 
