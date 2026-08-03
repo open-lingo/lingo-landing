@@ -1,7 +1,7 @@
 {
   "name": "Open Lingo",
   "short_name": "Open Lingo",
-  "description": "Structured courses, spaced-repetition flashcards, and letter practice. Free and open source.",
+  "description": "Structured courses, spaced-repetition flashcards, and letter practice. Free and open source, MIT licensed.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f5f0e6",

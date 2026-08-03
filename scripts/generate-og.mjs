@@ -67,7 +67,7 @@ const HTML = `<!doctype html>
       <div class="tile">O</div>
       <div class="name">Open Lingo</div>
     </div>
-    <div class="tag">Free &middot; Open source &middot; No account to start</div>
+    <div class="tag">Free &middot; Open source &middot; MIT licensed</div>
   </div>
 </body></html>`;
 

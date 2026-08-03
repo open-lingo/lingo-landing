@@ -13,7 +13,7 @@ export function Landing() {
   useSeo({
     title: "Open Lingo",
     description:
-      "Structured courses, spaced-repetition flashcards, and letter practice for Korean, Japanese and Spanish. Free, open source, and no account needed to start.",
+      "Structured courses, spaced-repetition flashcards, and letter practice for Korean, Japanese and Spanish. Free and open source, MIT licensed.",
     path: "/",
   });
   const closing = useReveal<HTMLDivElement>();

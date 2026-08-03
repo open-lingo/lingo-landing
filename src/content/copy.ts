@@ -63,14 +63,14 @@ export const HERO_PHRASES: readonly HeroPhrase[] = [
  */
 export const COPY = {
   hero: {
-    eyebrow: "Free · Open source · No account needed to start",
+    eyebrow: "Free · Open source · MIT licensed",
     lead: "Right now you need the small grey text.",
     leadAccent: "Give it three weeks.",
     subtitle:
       "Structured courses, spaced repetition that actually tracks what you forget, and handwriting practice — in an app whose source you can read.",
     primaryCta: "Try a lesson",
     secondaryCta: "Create account",
-    meta: "No card, no signup to try, no ads on lessons",
+    meta: "No card. An account keeps your progress in sync across devices.",
   },
 
   why: {
@@ -158,7 +158,7 @@ export const COPY = {
   closing: {
     title: "Three weeks from now",
     subtitle:
-      "That sentence at the top stops needing its annotation. Start with one lesson — no account required.",
+      "That sentence at the top stops needing its annotation. Start with one lesson.",
     roadmapPrompt: "Want to see what is coming next?",
     roadmapCta: "Read the roadmap",
   },

@@ -43,6 +43,10 @@ describe("landing copy", () => {
     "share yours",
     "anki",
     "stories with audio",
+    // Retired 2026-08-03: you can try a lesson signed out, but an account is
+    // required for progress to persist or sync, so "no account needed" oversold it.
+    "no account",
+    "no signup",
   ])("does not advertise %s, which does not ship today", (claim) => {
     expect(text).not.toContain(claim);
   });
