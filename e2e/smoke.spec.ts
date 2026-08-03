@@ -28,13 +28,42 @@ test("roadmap renders all three lanes with items", async ({ page }) => {
 
 test("docs index links through to a doc page", async ({ page }) => {
   await page.goto("/docs");
-  await page.getByRole("link", { name: /flashcards and reviews/i }).click();
+  // Scoped to the index list: the same title also appears in the nav rail.
+  await page.getByRole("main").getByRole("link", { name: /flashcards and reviews/i }).first().click();
   await expect(
     page.getByRole("heading", { level: 1, name: /flashcards and reviews/i }),
   ).toBeVisible();
   await expect(
     page.getByRole("heading", { level: 2, name: /the four ratings/i }),
   ).toBeVisible();
+});
+
+test("the docs rail lists every section and marks the open page", async ({ page }) => {
+  await page.goto("/docs/flashcards");
+  const rail = page.getByRole("navigation", { name: "Docs" });
+  for (const section of ["Start here", "Learning", "Help"]) {
+    await expect(rail.getByText(section, { exact: true })).toBeVisible();
+  }
+  await expect(
+    rail.getByRole("link", { name: /flashcards and reviews/i }),
+  ).toHaveAttribute("aria-current", "page");
+});
+
+test("docs search finds a page by its heading", async ({ page }) => {
+  await page.goto("/docs");
+  await page.getByRole("searchbox", { name: /search docs/i }).fill("four ratings");
+  await page.getByRole("button", { name: /flashcards and reviews/i }).first().click();
+  await expect(
+    page.getByRole("heading", { level: 1, name: /flashcards and reviews/i }),
+  ).toBeVisible();
+});
+
+test("a doc page offers on-this-page and next links", async ({ page }) => {
+  await page.goto("/docs/courses");
+  await expect(page.getByRole("navigation", { name: "On this page" })).toBeVisible();
+  await page.getByRole("navigation", { name: "Nearby pages" })
+    .getByRole("link").last().click();
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 });
 
 test("legal pages render", async ({ page }) => {

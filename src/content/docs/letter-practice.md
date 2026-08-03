@@ -1,7 +1,8 @@
 ---
 title: Letter practice
 description: Learning Hiragana, Katakana, and Hangul.
-order: 4
+order: 3
+section: Learning
 ---
 
 ## Stroke order

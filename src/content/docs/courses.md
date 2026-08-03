@@ -1,7 +1,8 @@
 ---
 title: Courses
 description: How lessons, modules, and the learning path fit together.
-order: 2
+order: 1
+section: Learning
 ---
 
 ## Modules and lessons

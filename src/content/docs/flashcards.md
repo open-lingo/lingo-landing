@@ -1,7 +1,8 @@
 ---
 title: Flashcards and reviews
 description: How spaced repetition schedules your reviews.
-order: 3
+order: 2
+section: Learning
 ---
 
 ## Why cards come back when they do

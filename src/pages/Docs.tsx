@@ -1,27 +1,43 @@
 import { Link } from "react-router";
-import { DOCS } from "@/content/docsIndex";
-import { Card } from "@/components/ui/Card";
+import { DOC_SECTIONS } from "@/content/docsIndex";
 
+/** Docs landing: the same tree as the rail, with descriptions. */
 export function Docs() {
   return (
-    <section className="mx-auto max-w-4xl px-6 py-16">
-      <h1 className="text-4xl font-black tracking-tight text-text-primary">Docs</h1>
-      <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-text-secondary">
+    <div className="min-w-0">
+      <h1 className="text-[clamp(1.9rem,4vw,2.5rem)] font-black tracking-tight text-text-primary">
+        Docs
+      </h1>
+      <p className="mt-3 max-w-xl text-[16px] leading-relaxed text-text-secondary">
         How the app works — courses, reviews, and everything else worth knowing.
       </p>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2">
-        {DOCS.map((doc) => (
-          <Link key={doc.slug} to={`/docs/${doc.slug}`} className="block">
-            <Card className="h-full transition-colors hover:border-accent">
-              <h2 className="text-[15px] font-bold text-text-primary">{doc.title}</h2>
-              <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
-                {doc.description}
-              </p>
-            </Card>
-          </Link>
+      <div className="mt-12 flex flex-col gap-10">
+        {DOC_SECTIONS.map((section) => (
+          <section key={section.title}>
+            <h2 className="font-mono text-[11px] uppercase tracking-[0.12em] text-accent">
+              {section.title}
+            </h2>
+            <ul className="mt-3 flex flex-col divide-y divide-border border-t border-border">
+              {section.docs.map((doc) => (
+                <li key={doc.slug}>
+                  <Link
+                    to={`/docs/${doc.slug}`}
+                    className="group flex flex-col gap-1 py-4 transition-colors"
+                  >
+                    <span className="text-[15px] font-bold text-text-primary group-hover:text-accent">
+                      {doc.title}
+                    </span>
+                    <span className="text-[14px] leading-relaxed text-text-secondary">
+                      {doc.description}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

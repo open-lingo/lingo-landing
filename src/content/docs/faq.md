@@ -1,7 +1,8 @@
 ---
 title: FAQ
 description: Common questions about accounts, pricing, and the project.
-order: 5
+order: 1
+section: Help
 ---
 
 ## Is it free?

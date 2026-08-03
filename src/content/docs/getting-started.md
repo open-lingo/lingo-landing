@@ -2,6 +2,7 @@
 title: Getting started
 description: Create an account, pick a language, and finish your first lesson.
 order: 1
+section: Start here
 ---
 
 ## Try it without an account
