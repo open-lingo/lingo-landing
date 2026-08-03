@@ -7,8 +7,15 @@ import { FeatureBand } from "@/components/FeatureBand";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { useReveal, revealClasses } from "@/useReveal";
+import { useSeo } from "@/useSeo";
 
 export function Landing() {
+  useSeo({
+    title: "Open Lingo",
+    description:
+      "Structured courses, spaced-repetition flashcards, and letter practice for Korean, Japanese and Spanish. Free, open source, and no account needed to start.",
+    path: "/",
+  });
   const closing = useReveal<HTMLDivElement>();
 
   return (

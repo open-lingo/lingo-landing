@@ -1,8 +1,15 @@
 import { Link } from "react-router";
 import { DOC_SECTIONS } from "@/content/docsIndex";
+import { useSeo } from "@/useSeo";
 
 /** Docs landing: the same tree as the rail, with descriptions. */
 export function Docs() {
+  useSeo({
+    title: "Docs",
+    description:
+      "How Open Lingo works — courses, spaced repetition, letter practice, and the placement test.",
+    path: "/docs",
+  });
   return (
     <div className="min-w-0">
       <h1 className="text-[clamp(1.9rem,4vw,2.5rem)] font-bold text-text-primary">

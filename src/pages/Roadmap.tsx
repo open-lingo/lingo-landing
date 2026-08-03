@@ -1,7 +1,14 @@
 import { LANES, itemsInLane, ROADMAP_ITEMS } from "@/content/roadmap";
 import { RoadmapLane } from "@/components/RoadmapLane";
+import { useSeo } from "@/useSeo";
 
 export function Roadmap() {
+  useSeo({
+    title: "Roadmap",
+    description:
+      "What has shipped, what is being built, and what is queued behind it. No dates — the order is the commitment.",
+    path: "/roadmap",
+  });
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
       <div className="max-w-2xl border-b border-border pb-10">

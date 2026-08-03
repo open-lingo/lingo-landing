@@ -13,11 +13,77 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@700&family=Noto+Sans+KR:wght@700&display=swap"
       rel="stylesheet"
     />
+
     <title>Open Lingo — free, open-source language learning</title>
     <meta
       name="description"
-      content="Structured courses, spaced-repetition flashcards, and letter practice. Free, open-source, and yours to fork."
+      content="Structured courses, spaced-repetition flashcards, and letter practice for Korean, Japanese and Spanish. Free, open source, and no account needed to start."
     />
+
+    <!-- Origins below are Vite build-time env substitutions, so a domain
+         change is a variable change rather than a markup edit. -->
+    <link rel="canonical" href="%VITE_SITE_ORIGIN%/" />
+
+    <!-- Icons. favicon.ico carries 16/32/48 for browsers that ignore the PNGs. -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#9c2c2c" />
+
+    <!-- Open Graph. Social crawlers do not run JS, so these are the tags that
+         actually decide what a shared link looks like. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Open Lingo" />
+    <meta property="og:url" content="%VITE_SITE_ORIGIN%/" />
+    <meta
+      property="og:title"
+      content="Open Lingo — free, open-source language learning"
+    />
+    <meta
+      property="og:description"
+      content="Structured courses, spaced-repetition flashcards, and letter practice for Korean, Japanese and Spanish. Free, open source, and no account needed to start."
+    />
+    <meta property="og:image" content="%VITE_SITE_ORIGIN%/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="日本語が読める — “I can read Japanese.” Open Lingo: free, open source, no account to start."
+    />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Open Lingo — free, open-source language learning"
+    />
+    <meta
+      name="twitter:description"
+      content="Structured courses, spaced-repetition flashcards, and letter practice. Free, open source, and no account needed to start."
+    />
+    <meta name="twitter:image" content="%VITE_SITE_ORIGIN%/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Open Lingo",
+        "url": "%VITE_SITE_ORIGIN%/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "description": "Structured courses, spaced-repetition flashcards, and letter practice for Korean, Japanese and Spanish.",
+        "license": "https://opensource.org/licenses/MIT",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": {
+          "@type": "Organization",
+          "name": "Open Lingo",
+          "url": "%VITE_SITE_ORIGIN%/"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

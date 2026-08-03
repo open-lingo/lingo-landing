@@ -3,10 +3,18 @@ import Markdown from "react-markdown";
 import { getDoc, getNeighbours, headingId } from "@/content/docsIndex";
 import { DocToc } from "@/components/docs/DocToc";
 import { Icon } from "@/components/ui/Icon";
+import { useSeo } from "@/useSeo";
 
 export function DocPage() {
   const { slug } = useParams<{ slug: string }>();
   const doc = slug ? getDoc(slug) : undefined;
+
+  // Frontmatter already carries exactly what a search result needs.
+  useSeo({
+    title: doc?.title ?? "Doc not found",
+    description: doc?.description,
+    path: `/docs/${slug ?? ""}`,
+  });
 
   if (!doc) {
     return (

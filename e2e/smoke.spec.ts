@@ -124,3 +124,74 @@ test("theme toggle switches to dark", async ({ page }) => {
   await page.getByRole("button", { name: /theme/i }).click();
   await expect(page.locator("html")).toHaveClass(/dark/);
 });
+
+test("the head carries canonical, OG and structured data", async ({ page }) => {
+  await page.goto("/");
+  const head = await page.content();
+  // Vite substitutes %VITE_*% at build time; a literal left in the output means
+  // the origin never got injected and every absolute URL is broken.
+  expect(head).not.toContain("%VITE_");
+
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    /^https?:\/\/.+/,
+  );
+  for (const sel of [
+    'meta[property="og:title"]',
+    'meta[property="og:description"]',
+    'meta[property="og:image"]',
+    'meta[name="twitter:card"]',
+  ]) {
+    await expect(page.locator(sel)).toHaveCount(1);
+  }
+
+  const ld = await page.locator('script[type="application/ld+json"]').textContent();
+  const parsed = JSON.parse(ld ?? "{}");
+  expect(parsed["@type"]).toBe("SoftwareApplication");
+  expect(parsed.url).toMatch(/^https?:\/\//);
+});
+
+test("icons and the manifest are served", async ({ page, request }) => {
+  await page.goto("/");
+  for (const asset of [
+    "/favicon.ico",
+    "/favicon-32x32.png",
+    "/apple-touch-icon.png",
+    "/icon-192.png",
+    "/icon-512.png",
+    "/icon-maskable-512.png",
+    "/og-image.png",
+    "/site.webmanifest",
+  ]) {
+    const res = await request.get(asset);
+    expect(res.status(), `${asset} should be served`).toBe(200);
+  }
+});
+
+test("robots and sitemap list every route", async ({ request }) => {
+  const robots = await request.get("/robots.txt");
+  expect(robots.status()).toBe(200);
+  expect(await robots.text()).toMatch(/Sitemap:\s*https?:\/\/.+\/sitemap\.xml/);
+
+  const sitemap = await request.get("/sitemap.xml");
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  for (const route of ["/", "/roadmap", "/docs", "/docs/flashcards", "/privacy"]) {
+    expect(xml, `sitemap should list ${route}`).toContain(`<loc>`);
+  }
+  // Every doc page must appear, so a new markdown file cannot be silently
+  // left out of the index.
+  expect(xml).toContain("/docs/placement-test");
+});
+
+test("routes set their own title and canonical", async ({ page }) => {
+  await page.goto("/roadmap");
+  await expect(page).toHaveTitle(/Roadmap · Open Lingo/);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    /\/roadmap$/,
+  );
+
+  await page.goto("/docs/flashcards");
+  await expect(page).toHaveTitle(/Flashcards and reviews · Open Lingo/);
+});
