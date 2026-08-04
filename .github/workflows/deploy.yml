@@ -38,6 +38,10 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
+      # The build prerenders every route in a real browser (scripts/prerender.mjs),
+      # so the runner needs Chromium. `--only-shell` pulls the headless shell
+      # rather than the full browser — it is all Playwright launches here.
+      - run: npx playwright install --with-deps --only-shell chromium
       - run: npm run test:run
       - name: build
         env:
