@@ -89,9 +89,14 @@ jobs:
             --cache-control "no-cache"
       - name: invalidate CloudFront
         run: |
+          # "/*" rather than just the root: prerendering means /roadmap,
+          # /docs and every /docs/<slug> are their own HTML objects, and a
+          # root-only invalidation would leave all of them serving the
+          # previous build. Assets are content-hashed so re-fetching them
+          # costs nothing.
           aws cloudfront create-invalidation \
             --distribution-id "${{ vars.LANDING_CLOUDFRONT_DIST_ID }}" \
-            --paths "/index.html" "/"
+            --paths "/*"
       - name: verify site responds
         run: |
           sleep 10
