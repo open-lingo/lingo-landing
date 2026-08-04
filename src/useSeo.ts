@@ -34,7 +34,7 @@ export function useSeo({
   path: string;
 }) {
   useEffect(() => {
-    const full = title === SITE_NAME ? title : `${title} · ${SITE_NAME}`;
+    const full = title.startsWith(SITE_NAME) ? title : `${title} · ${SITE_NAME}`;
     document.title = full;
 
     if (description) {

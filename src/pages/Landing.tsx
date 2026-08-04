@@ -11,7 +11,7 @@ import { useSeo } from "@/useSeo";
 
 export function Landing() {
   useSeo({
-    title: "Open Lingo",
+    title: "Open Lingo — free, open-source language learning",
     description:
       "Structured courses, spaced-repetition flashcards, and letter practice for Korean, Japanese and Spanish. Free and open source, MIT licensed.",
     path: "/",
