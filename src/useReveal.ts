@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Scroll-reveal that fails visible.
@@ -8,8 +8,14 @@ import { useLayoutEffect, useRef, useState } from "react";
  * — reduced motion, no IntersectionObserver, a prerender, a crawler — which is
  * an unacceptable failure mode for a page whose job is to be read.
  *
- * So the default is visible. An element is only hidden if it is measurably
- * below the fold AND an observer was successfully attached to reveal it again.
+ * So the default is visible. An element is only hidden once the observer has
+ * confirmed it is off screen, and it is revealed the moment it scrolls in.
+ *
+ * The off-screen check comes from the observer's own first callback rather than
+ * `getBoundingClientRect()` in a layout effect. Measuring forces synchronous
+ * layout once per revealed element, which showed up as ~107ms of forced reflow
+ * in a Lighthouse trace; IntersectionObserver reports the same fact
+ * asynchronously and for free.
  */
 export function useReveal<T extends HTMLElement = HTMLDivElement>(): {
   ref: React.RefObject<T | null>;
@@ -18,7 +24,7 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(): {
   const ref = useRef<T>(null);
   const [shown, setShown] = useState(true);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
@@ -29,18 +35,21 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(): {
       return; // stays visible
     }
 
-    // Already on screen (or nearly): never hide it — animating content that is
-    // already in front of the reader is just a flicker.
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.9) return;
-
-    setShown(false);
+    let armed = false;
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             setShown(true);
             observer.disconnect();
+            return;
+          }
+          // First report and it is off screen: hide it so there is something
+          // to reveal. This happens before the reader could have scrolled to
+          // it, so the transition from visible to hidden is never seen.
+          if (!armed) {
+            armed = true;
+            setShown(false);
           }
         }
       },

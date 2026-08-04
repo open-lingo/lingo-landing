@@ -65,7 +65,21 @@ for (const route of routes()) {
   });
   await page.waitForTimeout(200);
 
-  const html = "<!doctype html>\n" + (await page.evaluate(() => document.documentElement.outerHTML));
+  // The font stylesheet ships as `rel=preload` + an onload that swaps it to
+  // `rel=stylesheet`, keeping it off the critical path. By capture time that
+  // swap has already run, so serialising the DOM would bake the
+  // render-blocking form back into every prerendered page. Put `rel` back
+  // before reading the HTML out.
+  await page.evaluate(() => {
+    const link = document.querySelector(
+      'link[as="style"][href*="fonts.googleapis.com"]',
+    );
+    if (link) link.setAttribute("rel", "preload");
+  });
+
+  const html =
+    "<!doctype html>\n" + (await page.evaluate(() => document.documentElement.outerHTML));
+
 
   const outDir = route === "/" ? DIST : path.join(DIST, route);
   fs.mkdirSync(outDir, { recursive: true });

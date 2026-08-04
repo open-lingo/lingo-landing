@@ -85,6 +85,20 @@ def main() -> None:
     # 80% safe zone and let the colour bleed to the edges.
     tile(512, 0.22, 0).save(PUBLIC / "icon-maskable-512.png")
 
+    # Header mask. The site header paints the mark with `mask-image` and
+    # `bg-current`, so only the alpha channel matters — no tile, no colour.
+    # It was pointing at icon.ico: 97 KiB of five bitmaps to draw a 28px glyph.
+    # 96px covers 28px at 3x.
+    mark = load_mark()
+    bbox = mark.getbbox()
+    if bbox:
+        mark = mark.crop(bbox)
+    w, h = mark.size
+    scale = 96 / max(w, h)
+    mark.resize((max(1, round(w * scale)), max(1, round(h * scale))), Image.LANCZOS).save(
+        PUBLIC / "mark.png"
+    )
+
     for f in sorted(PUBLIC.glob("*.png")) + [PUBLIC / "favicon.ico"]:
         print(f"  {f.name:<28} {f.stat().st_size:>7,}B")
 

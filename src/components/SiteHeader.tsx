@@ -28,8 +28,8 @@ export function SiteHeader() {
           <span
             className="inline-block h-6 w-6 shrink-0 bg-current sm:h-7 sm:w-7"
             style={{
-              maskImage: "url('/icon.ico')",
-              WebkitMaskImage: "url('/icon.ico')",
+              maskImage: "url('/mark.png')",
+              WebkitMaskImage: "url('/mark.png')",
               maskSize: "contain",
               WebkitMaskSize: "contain",
               maskRepeat: "no-repeat",

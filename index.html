@@ -10,9 +10,12 @@
          cover the hero's target-script glyphs (Google serves unicode-range
          subsets, so only the handful of chunks actually used get fetched). -->
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@700&family=Noto+Sans+KR:wght@700&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@700&family=Noto+Sans+KR:wght@700&display=swap" /></noscript>
 
     <title>Open Lingo — free, open-source language learning</title>
     <meta
